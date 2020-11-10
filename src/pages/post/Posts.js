@@ -1,6 +1,7 @@
 import React, { Fragment, Component, useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
+import styled from 'styled-components';
 
 import source from 'posts/20201109-title.md';
 import { Link, useHistory } from 'react-router-dom';
@@ -25,7 +26,7 @@ function Post(props) {
       markdownFiles.map(file =>
         fetch(file).then(res => {
           urlArray.push(res.url);
-          console.log(res, 'res');
+          // console.log(res, 'res');
           return res.text();
           // const item = {
           //   url: res.url,
@@ -57,6 +58,7 @@ function Post(props) {
         // console.log(currIndex, 'currIndex');
         // console.log(urlIndex, 'urlIndex');
         // console.log(urlFormat, 'urlFormat');
+        // console.log(postContent, 'postContent');
         if (currIndex === urlIndex) {
           obj.slug = urlFormat;
           obj.title = postTitle;
@@ -68,50 +70,75 @@ function Post(props) {
       return arr.concat(obj);
     }, []);
     setPosts(posts);
-    console.log(posts, 'posts');
+    // console.log(posts, 'posts');
   };
   // const posts = await Promise.all(markdownFiles.map((file) => fetch(file).then((res) => res.text())))
   //     .catch((err) => console.error(err));
-
-  const fetchPost = async () => {
-    await fetch(source)
-      // .then(res => {
-      //   console.log(res, 'res');
-      //   console.log(res.text(), 'res.text()');
-      //   // return setPost(res.text());
-      //   return res.text();
-      // })
-      .then(res => res.text())
-      .then(item => setPost(item))
-      .catch(err => console.error(err));
-  };
 
   useEffect(() => {
     // console.log(markdownContext.keys(), 'markdownContext.keys()');
     // console.log(markdownFiles, 'markdownFiles');
     fetchPosts();
-    // fetchPost();
   }, []);
 
   return (
-    <div>
+    <Styled.Posts>
       {/* <ReactMarkdown plugins={[gfm]} source={post} /> */}
       {posts.length > 1 &&
         posts.map((item, index) => {
-          console.log(item.slug, 'item.slug');
-          console.log(`${match.path}/@${item.slug}`, '`${match.path}/@${item.slug}`');
-          console.log(`${match.path}@${item.slug}`, '`${match.path}@${item.slug}`');
+          // console.log(item.slug, 'item.slug');
+          // console.log(`${match.path}/@${item.slug}`, '`${match.path}/@${item.slug}`');
+          // console.log(`${match.path}@${item.slug}`, '`${match.path}@${item.slug}`');
           return (
-            <div key={index} onClick={() => history.push(`${match.path}/@${item.slug}`)}>
+            // <div key={index} onClick={() => history.push(`${match.path}/@${item.slug}`)}>
+            <div key={index}>
               <hr />
-              <ReactMarkdown plugins={[gfm]} source={item.content} />
+              <Link to={`${match.path}/@${item.slug}`}>{item.title}</Link>
+              {/* <div>{item.content}</div> */}
+              <ReactMarkdown
+                className="post-content"
+                plugins={[gfm]}
+                source={item.content}
+                // transformImageUri={uri => {
+                //   console.log(uri, 'uri');
+                //   return 'string';
+                // }}
+                renderers={{
+                  image: ({ alt, src, title }) => {
+                    let imgSrc = require(`posts/${src}`);
+                    if (imgSrc.default) {
+                      imgSrc = imgSrc.default;
+                    }
+                    return null;
+                  },
+                }}
+              />
               {/* <ReactMarkdown plugins={[gfm]} source={item} /> */}
             </div>
           );
         })}
-    </div>
+    </Styled.Posts>
   );
 }
+
+const Styled = {
+  Posts: styled.div`
+    .post-content {
+      width: 300px;
+      /* height: 100px; */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      line-height: 1.2em;
+      height: 3.6em;
+      * {
+        display: inline;
+      }
+    }
+  `,
+};
 
 export default Post;
 // to={`${match.path}/@${item}`}

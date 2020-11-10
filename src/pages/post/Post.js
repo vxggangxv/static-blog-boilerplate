@@ -75,7 +75,24 @@ function Post({ match }) {
       <h1>Title: {postTitle}</h1>
       <h1>Date: {postDate}</h1>
       <h1>Category: {postCategory}</h1>
-      <ReactMarkdown plugins={[gfm]} source={postContent} />
+      <ReactMarkdown
+        plugins={[gfm]}
+        source={postContent}
+        // transformImageUri={uri => {
+        //   console.log(uri, 'uri');
+        //   return 'string';
+        // }}
+        renderers={{
+          image: ({ alt, src, title }) => {
+            let imgSrc = require(`posts/${src}`);
+            if (imgSrc.default) {
+              imgSrc = imgSrc.default;
+            }
+            return <img alt={alt} src={imgSrc} title={title} />;
+          },
+        }}
+      />
+      {/* <ReactMarkdown plugins={[gfm]} source={postContent} /> */}
       {/* <ReactMarkdown plugins={[gfm]} source={post} /> */}
       {/* {posts.length > 1 &&
         posts.map((item, index) => {

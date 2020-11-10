@@ -73,12 +73,6 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "reactSnap": {
-    "include": [
-      "/",
-      "/posts"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
