@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "cba7bf7c81ffe3d40bf7828b7447befe",
+    "revision": "8da0574d0c1fe2cb0e87695373625810",
     "url": "/static-blog-boilerplate/index.html"
   },
   {
-    "revision": "76496ae8ef2116e69f89",
+    "revision": "2684288205b392277bad",
     "url": "/static-blog-boilerplate/static/css/main.92ef3083.chunk.css"
   },
   {
@@ -12,28 +12,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static-blog-boilerplate/static/js/10.8b203b88.chunk.js"
   },
   {
-    "revision": "1becedad5308df550b73",
-    "url": "/static-blog-boilerplate/static/js/2.40289c82.chunk.js"
+    "revision": "417f7bdf0e720bec04de",
+    "url": "/static-blog-boilerplate/static/js/2.36dcd2ec.chunk.js"
   },
   {
     "revision": "427f3c4367ad9cc2dbd5c6f9e7afaed7",
-    "url": "/static-blog-boilerplate/static/js/2.40289c82.chunk.js.LICENSE.txt"
+    "url": "/static-blog-boilerplate/static/js/2.36dcd2ec.chunk.js.LICENSE.txt"
   },
   {
     "revision": "abb0165f1f57b7d2ba30",
     "url": "/static-blog-boilerplate/static/js/3.8415134d.chunk.js"
   },
   {
-    "revision": "5ad8e67208ecd4579bda",
-    "url": "/static-blog-boilerplate/static/js/4.e0ec84fe.chunk.js"
+    "revision": "db864fabf7b2562c9378",
+    "url": "/static-blog-boilerplate/static/js/4.f187ead2.chunk.js"
   },
   {
     "revision": "d331cc8ce04cb282c877",
     "url": "/static-blog-boilerplate/static/js/5.8bcd6e56.chunk.js"
   },
   {
-    "revision": "62fef226505ddfa9c7e7",
-    "url": "/static-blog-boilerplate/static/js/6.8415c354.chunk.js"
+    "revision": "52be3f45017a7936dcc1",
+    "url": "/static-blog-boilerplate/static/js/6.f64d3c5c.chunk.js"
   },
   {
     "revision": "d2e00d5957c47f0c7d1c",
@@ -48,12 +48,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static-blog-boilerplate/static/js/9.c3402bc5.chunk.js"
   },
   {
-    "revision": "76496ae8ef2116e69f89",
-    "url": "/static-blog-boilerplate/static/js/main.a4e72839.chunk.js"
+    "revision": "2684288205b392277bad",
+    "url": "/static-blog-boilerplate/static/js/main.046cdb81.chunk.js"
   },
   {
-    "revision": "633cf4822d1ab97dc3e5",
-    "url": "/static-blog-boilerplate/static/js/runtime-main.74fef222.js"
+    "revision": "678da800b73397205e91",
+    "url": "/static-blog-boilerplate/static/js/runtime-main.7a81b60d.js"
   },
   {
     "revision": "ead70d740b0ff2bac4496e1a1d0d11d6",
