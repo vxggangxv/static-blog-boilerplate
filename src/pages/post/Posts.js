@@ -41,12 +41,28 @@ function Post(props) {
       urlArray.forEach((url, urlIndex) => {
         let urlFormat = url.slice(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
         urlFormat = urlFormat.slice(0, urlFormat.lastIndexOf('.'));
+        let postMeta = curr.slice(5);
+        postMeta = postMeta.slice(0, postMeta.indexOf('---') - 2);
+        // const postTitle = postMeta.slice(postMeta.indexOf('title') + 7, postMeta.indexOf('date') - 1);
+        const postTitle = postMeta.slice(
+          postMeta.indexOf('title') + 8,
+          postMeta.indexOf('date') - 3,
+        );
+        const postDate = postMeta.slice(
+          postMeta.indexOf('date') + 6,
+          postMeta.indexOf('category') - 1,
+        );
+        const postCategory = postMeta.slice(postMeta.indexOf('category:') + 11, -1);
+        const postContent = curr.slice(curr.indexOf('##'));
         // console.log(currIndex, 'currIndex');
         // console.log(urlIndex, 'urlIndex');
         // console.log(urlFormat, 'urlFormat');
         if (currIndex === urlIndex) {
           obj.slug = urlFormat;
-          obj.content = curr;
+          obj.title = postTitle;
+          obj.date = postDate;
+          obj.category = postCategory;
+          obj.content = postContent;
         }
       });
       return arr.concat(obj);
@@ -83,10 +99,10 @@ function Post(props) {
       {posts.length > 1 &&
         posts.map((item, index) => {
           console.log(item.slug, 'item.slug');
-          console.log(`${match.url}/@${item.slug}`, '`${match.url}/@${item.slug}`');
-          console.log(`${match.url}@${item.slug}`, '`${match.url}@${item.slug}`');
+          console.log(`${match.path}/@${item.slug}`, '`${match.path}/@${item.slug}`');
+          console.log(`${match.path}@${item.slug}`, '`${match.path}@${item.slug}`');
           return (
-            <div key={index} onClick={() => history.push(`${match.url}/@${item.slug}`)}>
+            <div key={index} onClick={() => history.push(`${match.path}/@${item.slug}`)}>
               <hr />
               <ReactMarkdown plugins={[gfm]} source={item.content} />
               {/* <ReactMarkdown plugins={[gfm]} source={item} /> */}
@@ -98,4 +114,4 @@ function Post(props) {
 }
 
 export default Post;
-// to={`${match.url}/@${item}`}
+// to={`${match.path}/@${item}`}

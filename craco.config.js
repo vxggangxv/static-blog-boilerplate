@@ -7,10 +7,10 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.md$/,
-        use: 'raw-loader',
-      },
+      // {
+      //   test: /\.md$/,
+      //   use: 'raw-loader',
+      // },
       {
         test: /\.(eot|md|svg|ttf|woff|woff2)$/,
         use: {

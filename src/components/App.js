@@ -8,6 +8,7 @@ import AppErrorBoundary from 'components/base/error/AppErrorBoundary';
 import LRoute from 'components/base/route/LRoute';
 import PrivateRoute from 'components/base/route/PrivateRoute';
 import './App.scss';
+// import './App.css';
 import * as mapper from 'lib/mapper';
 import Posts from 'pages/post';
 

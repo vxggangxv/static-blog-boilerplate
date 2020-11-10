@@ -8,12 +8,14 @@ import Posts from 'pages/post/Posts';
 import Post from 'pages/post/Post';
 
 export default function ({ match }) {
-  console.log(match.url, 'match.url');
+  // console.log(match, 'match');
+  // console.log(match.path, 'match.path');
+  // console.log(match.url, 'match.url');
 
   return (
     <Switch>
-      <Route exact path={`${match.url}`} component={Posts} />
-      <Route exact path={`${match.url}/@:slug`} component={Post} />
+      <Route exact path={`${match.path}`} component={Posts} />
+      <Route exact path={`${match.path}/@:slug`} component={Post} />
       <Route component={() => <Redirect to="/error/404" />} />
     </Switch>
   );
